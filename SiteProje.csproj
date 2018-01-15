@@ -1,0 +1,605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1372CBC1-8FDF-43F3-B331-8856EE77FBD2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SiteProje</RootNamespace>
+    <AssemblyName>SiteProje</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=16.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Visual Studio 2013\Usak_Uni\Usak-Uni\packages\AjaxControlToolkit.16.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="CKEditor.NET, Version=3.6.6.2, Culture=neutral, PublicKeyToken=e379cdf2f8354999, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\ckeditor_aspnet_3.6.6.2\bin\Release\CKEditor.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pages\Blogs\BlogDetay.aspx" />
+    <Content Include="Pages\Blogs\BlogListele.aspx" />
+    <Content Include="Pages\Kullanici\Cikis.aspx" />
+    <Content Include="Pages\Kullanici\Dogrulama.aspx" />
+    <Content Include="Pages\Kullanici\Giris.aspx" />
+    <Content Include="Pages\Kullanici\Hesabim.aspx" />
+    <Content Include="Pages\Kurslar\KursDetay.aspx" />
+    <Content Include="Pages\Kurslar\KursListele.aspx" />
+    <Content Include="Pages\Ogretmens\OgretmenDetay.aspx" />
+    <Content Include="Pages\Ogretmens\OgretmenListe.aspx" />
+    <Content Include="Pages\SabitIceriks\Contact.aspx" />
+    <Content Include="Pages\SabitIceriks\SabitIcerikDetay.aspx" />
+    <Content Include="Pages\Sepet\Odeme.aspx" />
+    <Content Include="Pages\Sepet\Sepet.aspx" />
+    <Content Include="UserControls\AltMenu.ascx" />
+    <Content Include="UserControls\Menu.ascx" />
+    <Content Include="UserControls\Social.ascx" />
+    <Content Include="WebForm1.aspx" />
+    <Content Include="Yonetim\Default.aspx" />
+    <Content Include="Yonetim\Login.aspx" />
+    <Content Include="Yonetim\UserControls\AltSayfaResim.ascx" />
+    <Content Include="Yonetim\UserControls\Cikis.ascx" />
+    <Content Include="Yonetim\UserControls\CokluIcerikler\CokluIcerikDuzenle.ascx" />
+    <Content Include="Yonetim\UserControls\CokluIcerikler\CokluIcerikEkle.ascx" />
+    <Content Include="Yonetim\UserControls\CokluIcerikler\CokluIcerikListele.ascx" />
+    <Content Include="Yonetim\UserControls\CokluIcerikler\EkIcerikEkle.ascx" />
+    <Content Include="Yonetim\UserControls\Dashboard.ascx" />
+    <Content Include="Yonetim\UserControls\HizmetAltHizmet\AltHizmetDuzenle.ascx" />
+    <Content Include="Yonetim\UserControls\HizmetAltHizmet\AltHizmetEkle.ascx" />
+    <Content Include="Yonetim\UserControls\HizmetAltHizmet\AltHizmetListele.ascx" />
+    <Content Include="Yonetim\UserControls\HizmetAltHizmet\AltHizmetTagEkle.ascx" />
+    <Content Include="Yonetim\UserControls\HizmetAltHizmet\HizmetDuzenle.ascx" />
+    <Content Include="Yonetim\UserControls\HizmetAltHizmet\HizmetEkle.ascx" />
+    <Content Include="Yonetim\UserControls\HizmetAltHizmet\HizmetListele.ascx" />
+    <Content Include="Yonetim\UserControls\Mesaj\MesajDetay.ascx" />
+    <Content Include="Yonetim\UserControls\Mesaj\MesajlariListele.ascx" />
+    <Content Include="Yonetim\UserControls\Ogretmen\OgretmenDers.ascx" />
+    <Content Include="Yonetim\UserControls\Ogretmen\OgretmenDuzenle.ascx" />
+    <Content Include="Yonetim\UserControls\Ogretmen\OgretmenEkle.ascx" />
+    <Content Include="Yonetim\UserControls\Ogretmen\OgretmenListele.ascx" />
+    <Content Include="Yonetim\UserControls\Randevu\RandevuEkle.ascx" />
+    <Content Include="Yonetim\UserControls\Randevu\RandevulariListele.ascx" />
+    <Content Include="Yonetim\UserControls\Randevu\RandevuOgrenciListe.ascx" />
+    <Content Include="Yonetim\UserControls\SabitIcerikler\Iletisim.ascx" />
+    <Content Include="Yonetim\UserControls\SabitIcerikler\SabitIcerikDuzenle.ascx" />
+    <Content Include="Yonetim\UserControls\SabitIcerikler\SabitIcerikEkle.ascx" />
+    <Content Include="Yonetim\UserControls\SabitIcerikler\SabitIcerikListele.ascx" />
+    <Content Include="Yonetim\UserControls\Slider.ascx" />
+    <Content Include="Yonetim\UserControls\Uye\UyeleriListele.ascx" />
+    <Content Include="AltSayfa.Master" />
+    <Content Include="AnaSayfa.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="Yonetim\AdminMaster.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AltSayfa.Master.cs">
+      <DependentUpon>AltSayfa.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltSayfa.Master.designer.cs">
+      <DependentUpon>AltSayfa.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AnaSayfa.Master.cs">
+      <DependentUpon>AnaSayfa.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnaSayfa.Master.designer.cs">
+      <DependentUpon>AnaSayfa.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="eResimDegistir.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Blogs\BlogDetay.aspx.cs">
+      <DependentUpon>BlogDetay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Blogs\BlogDetay.aspx.designer.cs">
+      <DependentUpon>BlogDetay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Blogs\BlogListele.aspx.cs">
+      <DependentUpon>BlogListele.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Blogs\BlogListele.aspx.designer.cs">
+      <DependentUpon>BlogListele.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Kullanici\Cikis.aspx.cs">
+      <DependentUpon>Cikis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Kullanici\Cikis.aspx.designer.cs">
+      <DependentUpon>Cikis.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Kullanici\Dogrulama.aspx.cs">
+      <DependentUpon>Dogrulama.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Kullanici\Dogrulama.aspx.designer.cs">
+      <DependentUpon>Dogrulama.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Kullanici\Giris.aspx.cs">
+      <DependentUpon>Giris.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Kullanici\Giris.aspx.designer.cs">
+      <DependentUpon>Giris.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Kullanici\Hesabim.aspx.cs">
+      <DependentUpon>Hesabim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Kullanici\Hesabim.aspx.designer.cs">
+      <DependentUpon>Hesabim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Kurslar\KursDetay.aspx.cs">
+      <DependentUpon>KursDetay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Kurslar\KursDetay.aspx.designer.cs">
+      <DependentUpon>KursDetay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Kurslar\KursListele.aspx.cs">
+      <DependentUpon>KursListele.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Kurslar\KursListele.aspx.designer.cs">
+      <DependentUpon>KursListele.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Ogretmens\OgretmenDetay.aspx.cs">
+      <DependentUpon>OgretmenDetay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Ogretmens\OgretmenDetay.aspx.designer.cs">
+      <DependentUpon>OgretmenDetay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Ogretmens\OgretmenListe.aspx.cs">
+      <DependentUpon>OgretmenListe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Ogretmens\OgretmenListe.aspx.designer.cs">
+      <DependentUpon>OgretmenListe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SabitIceriks\Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SabitIceriks\Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SabitIceriks\SabitIcerikDetay.aspx.cs">
+      <DependentUpon>SabitIcerikDetay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SabitIceriks\SabitIcerikDetay.aspx.designer.cs">
+      <DependentUpon>SabitIcerikDetay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Sepet\Odeme.aspx.cs">
+      <DependentUpon>Odeme.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Sepet\Odeme.aspx.designer.cs">
+      <DependentUpon>Odeme.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Sepet\Sepet.aspx.cs">
+      <DependentUpon>Sepet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Sepet\Sepet.aspx.designer.cs">
+      <DependentUpon>Sepet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\AltMenu.ascx.cs">
+      <DependentUpon>AltMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\AltMenu.ascx.designer.cs">
+      <DependentUpon>AltMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Menu.ascx.cs">
+      <DependentUpon>Menu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Menu.ascx.designer.cs">
+      <DependentUpon>Menu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Social.ascx.cs">
+      <DependentUpon>Social.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Social.ascx.designer.cs">
+      <DependentUpon>Social.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\AdminMaster.Master.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\AdminMaster.Master.designer.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\AltSayfaResim.ascx.cs">
+      <DependentUpon>AltSayfaResim.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\AltSayfaResim.ascx.designer.cs">
+      <DependentUpon>AltSayfaResim.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Cikis.ascx.cs">
+      <DependentUpon>Cikis.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Cikis.ascx.designer.cs">
+      <DependentUpon>Cikis.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\CokluIcerikler\CokluIcerikDuzenle.ascx.cs">
+      <DependentUpon>CokluIcerikDuzenle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\CokluIcerikler\CokluIcerikDuzenle.ascx.designer.cs">
+      <DependentUpon>CokluIcerikDuzenle.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\CokluIcerikler\CokluIcerikEkle.ascx.cs">
+      <DependentUpon>CokluIcerikEkle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\CokluIcerikler\CokluIcerikEkle.ascx.designer.cs">
+      <DependentUpon>CokluIcerikEkle.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\CokluIcerikler\CokluIcerikListele.ascx.cs">
+      <DependentUpon>CokluIcerikListele.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\CokluIcerikler\CokluIcerikListele.ascx.designer.cs">
+      <DependentUpon>CokluIcerikListele.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\CokluIcerikler\EkIcerikEkle.ascx.cs">
+      <DependentUpon>EkIcerikEkle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\CokluIcerikler\EkIcerikEkle.ascx.designer.cs">
+      <DependentUpon>EkIcerikEkle.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Dashboard.ascx.cs">
+      <DependentUpon>Dashboard.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Dashboard.ascx.designer.cs">
+      <DependentUpon>Dashboard.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\HizmetAltHizmet\AltHizmetDuzenle.ascx.cs">
+      <DependentUpon>AltHizmetDuzenle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\HizmetAltHizmet\AltHizmetDuzenle.ascx.designer.cs">
+      <DependentUpon>AltHizmetDuzenle.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\HizmetAltHizmet\AltHizmetEkle.ascx.cs">
+      <DependentUpon>AltHizmetEkle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\HizmetAltHizmet\AltHizmetEkle.ascx.designer.cs">
+      <DependentUpon>AltHizmetEkle.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\HizmetAltHizmet\AltHizmetListele.ascx.cs">
+      <DependentUpon>AltHizmetListele.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\HizmetAltHizmet\AltHizmetListele.ascx.designer.cs">
+      <DependentUpon>AltHizmetListele.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\HizmetAltHizmet\AltHizmetTagEkle.ascx.cs">
+      <DependentUpon>AltHizmetTagEkle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\HizmetAltHizmet\AltHizmetTagEkle.ascx.designer.cs">
+      <DependentUpon>AltHizmetTagEkle.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\HizmetAltHizmet\HizmetDuzenle.ascx.cs">
+      <DependentUpon>HizmetDuzenle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\HizmetAltHizmet\HizmetDuzenle.ascx.designer.cs">
+      <DependentUpon>HizmetDuzenle.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\HizmetAltHizmet\HizmetEkle.ascx.cs">
+      <DependentUpon>HizmetEkle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\HizmetAltHizmet\HizmetEkle.ascx.designer.cs">
+      <DependentUpon>HizmetEkle.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\HizmetAltHizmet\HizmetListele.ascx.cs">
+      <DependentUpon>HizmetListele.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\HizmetAltHizmet\HizmetListele.ascx.designer.cs">
+      <DependentUpon>HizmetListele.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Mesaj\MesajDetay.ascx.cs">
+      <DependentUpon>MesajDetay.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Mesaj\MesajDetay.ascx.designer.cs">
+      <DependentUpon>MesajDetay.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Mesaj\MesajlariListele.ascx.cs">
+      <DependentUpon>MesajlariListele.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Mesaj\MesajlariListele.ascx.designer.cs">
+      <DependentUpon>MesajlariListele.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Ogretmen\OgretmenDers.ascx.cs">
+      <DependentUpon>OgretmenDers.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Ogretmen\OgretmenDers.ascx.designer.cs">
+      <DependentUpon>OgretmenDers.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Ogretmen\OgretmenDuzenle.ascx.cs">
+      <DependentUpon>OgretmenDuzenle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Ogretmen\OgretmenDuzenle.ascx.designer.cs">
+      <DependentUpon>OgretmenDuzenle.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Ogretmen\OgretmenEkle.ascx.cs">
+      <DependentUpon>OgretmenEkle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Ogretmen\OgretmenEkle.ascx.designer.cs">
+      <DependentUpon>OgretmenEkle.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Ogretmen\OgretmenListele.ascx.cs">
+      <DependentUpon>OgretmenListele.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Ogretmen\OgretmenListele.ascx.designer.cs">
+      <DependentUpon>OgretmenListele.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Randevu\RandevuEkle.ascx.cs">
+      <DependentUpon>RandevuEkle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Randevu\RandevuEkle.ascx.designer.cs">
+      <DependentUpon>RandevuEkle.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Randevu\RandevulariListele.ascx.cs">
+      <DependentUpon>RandevulariListele.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Randevu\RandevulariListele.ascx.designer.cs">
+      <DependentUpon>RandevulariListele.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Randevu\RandevuOgrenciListe.ascx.cs">
+      <DependentUpon>RandevuOgrenciListe.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Randevu\RandevuOgrenciListe.ascx.designer.cs">
+      <DependentUpon>RandevuOgrenciListe.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\SabitIcerikler\Iletisim.ascx.cs">
+      <DependentUpon>Iletisim.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\SabitIcerikler\Iletisim.ascx.designer.cs">
+      <DependentUpon>Iletisim.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\SabitIcerikler\SabitIcerikDuzenle.ascx.cs">
+      <DependentUpon>SabitIcerikDuzenle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\SabitIcerikler\SabitIcerikDuzenle.ascx.designer.cs">
+      <DependentUpon>SabitIcerikDuzenle.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\SabitIcerikler\SabitIcerikEkle.ascx.cs">
+      <DependentUpon>SabitIcerikEkle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\SabitIcerikler\SabitIcerikEkle.ascx.designer.cs">
+      <DependentUpon>SabitIcerikEkle.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\SabitIcerikler\SabitIcerikListele.ascx.cs">
+      <DependentUpon>SabitIcerikListele.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\SabitIcerikler\SabitIcerikListele.ascx.designer.cs">
+      <DependentUpon>SabitIcerikListele.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Slider.ascx.cs">
+      <DependentUpon>Slider.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Slider.ascx.designer.cs">
+      <DependentUpon>Slider.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Uye\UyeleriListele.ascx.cs">
+      <DependentUpon>UyeleriListele.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yonetim\UserControls\Uye\UyeleriListele.ascx.designer.cs">
+      <DependentUpon>UyeleriListele.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="ckeditor\" />
+    <Folder Include="Content\" />
+    <Folder Include="Models\" />
+    <Folder Include="Upload\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SiteProjeORM\SiteProjeORM.csproj">
+      <Project>{259c8025-f857-4045-b379-8912f412447d}</Project>
+      <Name>SiteProjeORM</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>9093</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:9093/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

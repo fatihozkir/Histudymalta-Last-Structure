@@ -1,0 +1,15 @@
+C:\Users\Fatih\Documents\Visual Studio 2015\Project\SiteProje\SiteProjeORM\obj\Debug\SiteProjeORM.csprojResolveAssemblyReference.cache
+C:\Users\Fatih\Documents\Visual Studio 2015\Project\SiteProje\SiteProjeORM\bin\Debug\SiteProjeORM.dll
+C:\Users\Fatih\Documents\Visual Studio 2015\Project\SiteProje\SiteProjeORM\bin\Debug\SiteProjeORM.pdb
+C:\Users\Fatih\Documents\Visual Studio 2015\Project\SiteProje\SiteProjeORM\obj\Debug\SiteProjeORM.dll
+C:\Users\Fatih\Documents\Visual Studio 2015\Project\SiteProje\SiteProjeORM\obj\Debug\SiteProjeORM.pdb
+C:\Users\OzkirPc\Desktop\SiteProje\SiteProjeORM\bin\Debug\SiteProjeORM.dll
+C:\Users\OzkirPc\Desktop\SiteProje\SiteProjeORM\bin\Debug\SiteProjeORM.pdb
+C:\Users\OzkirPc\Desktop\SiteProje\SiteProjeORM\obj\Debug\SiteProjeORM.csprojResolveAssemblyReference.cache
+C:\Users\OzkirPc\Desktop\SiteProje\SiteProjeORM\obj\Debug\SiteProjeORM.dll
+C:\Users\OzkirPc\Desktop\SiteProje\SiteProjeORM\obj\Debug\SiteProjeORM.pdb
+D:\Openmindatelier\SiteProje\SiteProjeORM\bin\Debug\SiteProjeORM.dll
+D:\Openmindatelier\SiteProje\SiteProjeORM\bin\Debug\SiteProjeORM.pdb
+D:\Openmindatelier\SiteProje\SiteProjeORM\obj\Debug\SiteProjeORM.csprojResolveAssemblyReference.cache
+D:\Openmindatelier\SiteProje\SiteProjeORM\obj\Debug\SiteProjeORM.dll
+D:\Openmindatelier\SiteProje\SiteProjeORM\obj\Debug\SiteProjeORM.pdb

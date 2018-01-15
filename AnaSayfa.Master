@@ -1,0 +1,795 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AnaSayfa.master.cs" Inherits="SiteProje.AnaSayfa" %>
+
+<%@ Register Src="~/UserControls/Menu.ascx" TagPrefix="uc1" TagName="Menu" %>
+<%@ Register Src="~/UserControls/Social.ascx" TagPrefix="uc1" TagName="Social" %>
+<%@ Register Src="~/UserControls/AltMenu.ascx" TagPrefix="uc1" TagName="AltMenu" %>
+
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+     <meta charset="utf-8"/>  
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--meta responsive-->
+    
+    <!--START CSS--> 
+    <link rel="stylesheet" href="/Content/Language/css/nicdark_style.min.css"> <!--style-->
+
+    <!--google fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+
+    <!--[if lt IE 9]>  
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>  
+    <![endif]-->  
+
+    <!--FAVICONS-->
+    <link rel="shortcut icon" href="/Content/Language//Content/Language/img/favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="/Content/Language//Content/Language/img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/Content/Language//Content/Language/img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/Content/Language//Content/Language/img/favicon/apple-touch-icon-114x114.png">
+    <!--END FAVICONS-->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+     <script>
+         $(document).ready(function () {
+             $("[name='imgVertical']").each(function () {
+                 var arraySrc = ["img18", "img19", "img22", "img23", "img39", "img43"];
+                 var rndNumber = Math.floor((Math.random() * 5) + 1);
+                 var source = "/Content/Language/img/courses/vertical/" + arraySrc[rndNumber] + ".jpg";
+                 $(this).attr("src", source);
+             });
+             
+             
+             
+             
+
+         });
+         $(window).ready(function () {
+             ResimleriGetir();
+
+         });
+             function ResimleriGetir()
+             {
+                 $.ajax({
+                     type: 'POST',
+                     url: 'Default.aspx/Index',
+                     contentType: "application/json; charset=utf-8",
+                     dataType: "json",
+                     success: function (result) {
+                         
+                         var sayac = 0;
+                         var string = result.d,
+                            strx = string.split('!');
+                         array = [];
+                         array = array.concat(strx);
+                         var sayi = array.length;
+                         var sliderArkaPlan = $("#sliderBg");
+                         var source = "/Upload/Images/Big/";
+                         sliderArkaPlan.css("background-image", 'url(' + source + array[0] + ')');
+                             setInterval(function () {
+
+                                 sliderArkaPlan.fadeToggle(1000, function () {
+
+                                     sliderArkaPlan.css("background-image", 'url(' + source + array[sayac++] + ')');
+                                     sliderArkaPlan.fadeToggle(1000);
+                                 });
+                                 if (sayac == sayi) {
+                                     sayac = 0;
+                                 }
+
+                             }, 5000);
+                         
+                         
+                         
+
+                     }
+                 });
+             }
+         
+</script>
+  
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body id="start_nicdark_framework">
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    <div class="nicdark_site">
+
+            <!--START nicdark_site_fullwidth-->
+            <div class="nicdark_site_fullwidth nicdark_site_fullwidth_boxed nicdark_clearfix">
+
+
+
+<!--START menu responsive-->
+<div class="nicdark_navigation_5_sidebar_content nicdark_padding_40 nicdark_box_sizing_border_box nicdark_overflow_hidden nicdark_overflow_y_auto nicdark_transition_all_08_ease nicdark_bg_green nicdark_height_100_percentage nicdark_position_fixed nicdark_width_300 nicdark_right_300_negative nicdark_z_index_9">
+
+    <img alt="" width="25" class="nicdark_close_navigation_5_sidebar_content nicdark_cursor_pointer nicdark_right_20 nicdark_top_20 nicdark_position_absolute" src="/Content/Language/img/icons/icon-close-white.svg">
+
+
+
+    <div class="nicdark_navigation_5_sidebar">
+        <uc1:Menu runat="server" ID="Menu" />
+
+    </div>
+
+
+
+</div>
+<!--END menu responsive-->
+
+
+
+
+
+<div class="nicdark_section">
+
+    <div class="nicdark_section nicdark_bg_greydark">
+
+        
+
+
+        <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix">
+
+            <div class="grid grid_6 nicdark_padding_botttom_10 nicdark_padding_top_10 nicdark_text_align_center_responsive">
+
+              
+                <uc1:Social runat="server" id="Social" />
+                
+
+            </div>
+
+
+            <div class="grid grid_6 nicdark_text_align_right nicdark_border_top_1_solid_greydark_responsive nicdark_text_align_center_responsive nicdark_padding_botttom_10 nicdark_padding_top_10">
+
+                <div class="nicdark_navigation_top_header_5">
+                    <ul>
+                        <asp:LinkButton ID="LinkBtnHesap" runat="server" Visible="false" PostBackUrl="/Account"></asp:LinkButton>
+       <!-- <asp:Literal ID="PanelUnLogin" runat="server">
+             <li>
+
+                            <img alt="" class="nicdark_margin_right_10 nicdark_float_left" width="15" src="/Content/Language/img/icons/icon-user-grey.svg">
+                            <a href="/Login">Login</a>
+                        </li>
+            <li>
+                            <img alt="" class="nicdark_margin_right_10 nicdark_float_left" width="15" src="/Content/Language/img/icons/icon-login-grey.svg">
+                            <a href="/Login">Register</a>
+                        </li>
+        </asp:Literal>-->
+
+                         
+                       
+                    </ul>
+                </div>
+                
+                
+
+            </div>
+
+
+        </div>
+        <!--end container-->
+
+    </div>
+
+</div>
+
+<div class="nicdark_section nicdark_position_relative ">
+
+    <div class="nicdark_section nicdark_position_absolute nicdark_bg_greydark_alpha">
+
+        
+
+
+        <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix nicdark_position_relative">
+
+            <div class="grid grid_12 nicdark_display_none_all_responsive">
+
+                <div class="nicdark_section nicdark_height_10"></div>
+
+                <!--LOGO
+                <a href="index-2.html"><img alt="" class="nicdark_position_absolute nicdark_left_15 nicdark_top_17" width="120" src="/Content/Language/img/logos/logo-foodlab-white.svg"></a>
+              -->
+
+
+
+                <div class="nicdark_navigation_5 nicdark_text_align_right nicdark_float_right nicdark_display_none_all_responsive">
+                    <uc1:Menu runat="server" ID="Menu1" />
+
+                </div> 
+
+
+                
+
+                <div class="nicdark_section nicdark_height_10"></div> 
+                
+            </div>
+
+
+
+
+            <!--RESPONSIVE-->
+            <div class="nicdark_width_50_percentage nicdark_text_align_center_all_iphone nicdark_width_100_percentage_all_iphone nicdark_float_left nicdark_display_none nicdark_display_block_responsive">
+                <div class="nicdark_section nicdark_height_20"></div>
+                <%--<a href="index-2.html"><img alt="" width="120" class="" src="/Content/Language/img/logos/logo-foodlab-white.svg"></a>  --%> 
+            </div>
+            <div class="nicdark_width_50_percentage nicdark_width_100_percentage_all_iphone nicdark_float_left nicdark_display_none nicdark_display_block_responsive">
+                <div class="nicdark_section nicdark_height_20"></div>
+                <div class="nicdark_float_right nicdark_width_100_percentage nicdark_text_align_right nicdark_text_align_center_all_iphone">
+                    
+                    
+                    <a class="nicdark_open_navigation_5_sidebar_content" href="#">
+                        <img alt="" class="nicdark_margin_right_20" width="25" src="/Content/Language/img/icons/icon-menu-white.svg">
+                    </a>
+
+
+
+                </div>
+                <div class="nicdark_section nicdark_height_20"></div>
+            </div>
+            <!--RESPONSIVE-->
+
+
+
+
+
+        </div>
+        <!--end container-->
+
+    </div>
+
+</div>
+               
+        <div id="sliderBg" class="nicdark_section nicdark_background_size_cover nicdark_background_position_center_bottom" style="background-image:url(/Content/Language/img/parallax/img32.jpg);">
+
+    <div class="nicdark_section nicdark_bg_greydark_alpha_gradient_5">
+
+        
+        <div class="nicdark_section nicdark_height_250"></div>
+
+        <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix">
+
+
+            <div class="grid grid_8">
+
+                
+                
+                <strong class="nicdark_color_white nicdark_font_size_70 nicdark_font_size_40_responsive nicdark_line_height_40_responsive nicdark_first_font nicdark_display_block">
+                    <asp:Literal ID="LtrBuyukBaslik" runat="server"></asp:Literal></strong>
+
+                <div class="nicdark_section nicdark_height_1"></div>
+
+                <!--START typed words-->
+                <div class="nicdark_section nicdark_display_none_all_responsive">
+                    
+
+                    <strong class="nicdark_color_white nicdark_font_size_40 nicdark_first_font">
+                        <asp:Literal ID="LtrBuyukAltBaslik" runat="server"></asp:Literal> </strong>
+                    <br />
+                    <div class="nicdark_typed_strings">
+                        <asp:Repeater ID="RepeaterDegisenYazi" runat="server">
+                            <ItemTemplate>
+                                <p><strong class="nicdark_color_white nicdark_font_size_40 nicdark_first_font"><%#Eval("Icerik") %></strong></p>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                       
+
+                    </div>
+                    <span class="nicdark_typed nicdark_padding_botttom_5" style="white-space:pre;"></span>
+                
+                </div>
+               
+                
+                <div class="nicdark_section nicdark_height_30"></div>
+
+                <a class="nicdark_display_inline_block nicdark_margin_left_0 nicdark_text_align_center nicdark_box_sizing_border_box nicdark_color_white nicdark_border_2_solid_white nicdark_first_font nicdark_padding_10_20 nicdark_border_radius_3 nicdark_margin_10" href="/ConstantContent/AboutUs-3">About Me</a>
+                <a class="nicdark_display_inline_block nicdark_text_align_center nicdark_box_sizing_border_box nicdark_color_white nicdark_border_2_solid_white  nicdark_first_font nicdark_padding_10_20 nicdark_border_radius_3 nicdark_margin_10" href="/Courses">Courses</a>
+
+            </div>
+
+        </div>
+        <!--end container-->
+
+
+        <div class="nicdark_section nicdark_height_250"></div>
+
+
+    </div>
+
+</div>
+
+        <div class="nicdark_section nicdark_height_50"></div>
+
+
+        <div class="nicdark_section">
+
+    <div class="nicdark_container nicdark_clearfix">
+
+
+        <div class="grid grid_12">
+
+            <h1 class="nicdark_font_size_50"><strong>Courses</strong></h1>
+            <div class="nicdark_section nicdark_height_10"></div>
+            <h3 class=" nicdark_color_grey">Latest Add Courses</h3>
+        </div>
+
+        <asp:Repeater ID="RptOurCourses" runat="server" DataSourceID="SqlDataSourceKurslar">
+            <ItemTemplate>
+                <div class="nicdark_width_25_percentage nicdark_width_100_percentage_responsive nicdark_float_left">
+
+            <div class="nicdark_section nicdark_padding_30 nicdark_box_sizing_border_box">
+                
+
+                <!--START preview-->
+                <div class="nicdark_section nicdark_position_relative">
+                        
+                    <img alt='<%#Eval("Baslik") %>' name="imgVertical" class="nicdark_section">
+                   
+                    <div class="nicdark_bg_greydark_alpha_gradient_3 nicdark_position_absolute nicdark_left_0 nicdark_height_100_percentage nicdark_width_100_percentage nicdark_padding_30 nicdark_box_sizing_border_box">
+                        <div class="nicdark_position_absolute nicdark_bottom_30">
+                            <div class="nicdark_display_table nicdark_float_left">
+
+                                <div class="nicdark_display_table_cell nicdark_vertical_align_middle nicdark_bg_orange nicdark_display_inline_block nicdark_border_radius_100_percentage nicdark_padding_10 nicdark_text_align_center nicdark_width_25 nicdark_height_25">
+                                    <img alt="" class="" width="20" src="/Content/Language/img/icons/icon-paint.svg">
+                                </div>
+
+                                <h4 class=" nicdark_color_white nicdark_display_table_cell nicdark_vertical_align_middle nicdark_padding_left_5"><a class="nicdark_color_white nicdark_first_font" href='/CourseDetail/<%#SiteProjeORM.Tools.KarakterTemizle(Eval("Baslik").ToString())+"-"+Eval("HizmetId") %>'><%#Eval("Baslik") %></a></h4>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--END preview-->
+
+            </div> 
+
+        </div>
+            </ItemTemplate>
+        </asp:Repeater>
+
+        
+
+
+
+
+        <asp:SqlDataSource ID="SqlDataSourceKurslar" runat="server" ConnectionString="<%$ ConnectionStrings:EducationConnectionString %>" SelectCommand="SELECT [Baslik], [HizmetId] FROM [Hizmetler]"></asp:SqlDataSource>
+
+        
+
+
+
+
+    </div>
+</div>
+
+        <div class="nicdark_section nicdark_height_50"></div>
+
+
+        <div class="nicdark_section">
+
+
+    <!--start nicdark_container-->
+    <div class="nicdark_container nicdark_clearfix">
+
+
+        <div class="grid grid_12">
+
+            <h1 class="nicdark_font_size_50"><strong>Blogs</strong></h1>
+            <div class="nicdark_section nicdark_height_10"></div>
+            <h3 class=" nicdark_color_grey">Latest Posts</h3>
+
+        </div>
+
+        <div class="nicdark_section">
+        <!--START masonry-->
+        <div class="nicdark_masonry_content" style="position: relative; height: 814.969px;">
+            <asp:Panel ID="PanelIcerik0" runat="server" Visible="false">
+                <div class="nicdark_masonry_item nicdark_width_33_percentage nicdark_width_100_percentage_responsive" style="position: absolute; left: 0px; top: 0px;">
+
+                <div class="nicdark_section nicdark_padding_15 nicdark_box_sizing_border_box">
+                    <div class="nicdark_section nicdark_border_1_solid_grey">
+                        <div class="nicdark_section nicdark_position_relative">
+                             <asp:Image ID="ImgIcerik0" CssClass="nicdark_section" runat="server" />
+                            <div class=" nicdark_position_absolute nicdark_left_0 nicdark_height_100_percentage nicdark_width_100_percentage nicdark_padding_30 nicdark_box_sizing_border_box"></div>
+                            <asp:LinkButton ID="LinkBtnIcerik01" CssClass="nicdark_position_absolute nicdark_right_20 nicdark_top_20 nicdark_display_inline_block nicdark_color_white nicdark_bg_green nicdark_first_font nicdark_padding_8 nicdark_border_radius_3 nicdark_font_size_13 nicdark_z_index_9" runat="server">Article</asp:LinkButton>
+                        </div>
+                        <div class="nicdark_section nicdark_padding_30 nicdark_box_sizing_border_box">
+                            <h5 class="nicdark_second_font nicdark_color_grey"><a href="#">
+                                <asp:Label ID="LblIcerik0Tarih" runat="server" ></asp:Label></a></h5>
+                            <div class="nicdark_section nicdark_height_10"></div>
+                            <h2>
+                                 <asp:LinkButton ID="LinkBtn0Baslik" runat="server"></asp:LinkButton>
+                                
+
+                            </h2>
+                            <div class="nicdark_section nicdark_height_20"></div>
+                            <p><asp:LinkButton ID="LinkBtn0Icerik" runat="server"></asp:LinkButton></p>
+                        </div>
+                        <div class="nicdark_section nicdark_padding_20 nicdark_box_sizing_border_box nicdark_border_top_1_solid_grey">
+                            <div class="nicdark_width_50_percentage nicdark_float_left">
+                                <div class="nicdark_display_table nicdark_float_left">
+                                   &nbsp;
+                                    <p class="nicdark_display_table_cell nicdark_vertical_align_middle nicdark_font_size_15">&nbsp;</p>
+                                </div> 
+                            </div> 
+
+                            <div class="nicdark_width_50_percentage nicdark_float_left">
+                                <div class="nicdark_display_table nicdark_float_left">
+                                    <img alt="" class="nicdark_margin_right_10 nicdark_display_table_cell nicdark_vertical_align_middle" width="23" src="/Content/Language/img/icons/icon-comments.svg">
+                                    <p class="nicdark_display_table_cell nicdark_vertical_align_middle nicdark_font_size_15"><asp:LinkButton ID="LinkBtn0Incele" runat="server">Review</asp:LinkButton></p>
+                                </div> 
+                            </div> 
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </asp:Panel>
+
+            <asp:Panel ID="PanelIcerik1" runat="server" Visible="false">
+                <div class="nicdark_masonry_item nicdark_width_33_percentage nicdark_width_100_percentage_responsive " style="position: absolute; left: 399px; top: 0px;">
+
+                <div class="nicdark_section nicdark_padding_15 nicdark_box_sizing_border_box">
+                    <div class="nicdark_section nicdark_bg_blue nicdark_text_align_center">
+                        <div class="nicdark_section nicdark_padding_50 nicdark_box_sizing_border_box">
+                            <h2 class="nicdark_color_white nicdark_line_height_35">
+                                <asp:LinkButton ID="LinkBtn1Baslik" CssClass="nicdark_color_white nicdark_first_font" runat="server"></asp:LinkButton>
+                           
+
+                            </h2>
+                            <div class="nicdark_section nicdark_height_20"></div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </asp:Panel>
+            <asp:Panel ID="PanelIcerik2" runat="server" Visible="false">
+                <div class="nicdark_masonry_item nicdark_width_33_percentage nicdark_width_100_percentage_responsive " style="position: absolute; left: 799px; top: 0px;">
+
+                <div class="nicdark_section nicdark_padding_15 nicdark_box_sizing_border_box">
+                    
+
+                    <div class="nicdark_section nicdark_position_relative">
+                            
+                        <asp:Image ID="ImgIcerik2"  CssClass="nicdark_section" runat="server" />
+                        <a class="nicdark_position_absolute nicdark_right_20 nicdark_top_20 nicdark_display_inline_block nicdark_color_white nicdark_bg_blue nicdark_first_font nicdark_padding_8 nicdark_border_radius_3 nicdark_font_size_13 nicdark_z_index_9" href="#">Article</a>
+
+                        <div class="nicdark_bg_greydark_alpha_gradient nicdark_position_absolute nicdark_left_0 nicdark_height_100_percentage nicdark_width_100_percentage nicdark_padding_30 nicdark_box_sizing_border_box">
+                            <div class="nicdark_position_absolute nicdark_bottom_30">
+                                <h2 class="nicdark_color_white">
+                                     <asp:LinkButton ID="LinkBtnBaslik2" CssClass="nicdark_color_white nicdark_first_font" runat="server"></asp:LinkButton>
+                                    
+                                </h2>
+                                <div class="nicdark_section nicdark_height_10"></div> 
+                                <div class="nicdark_display_table nicdark_float_left">
+                                    <img alt="" class="nicdark_margin_right_10 nicdark_display_table_cell nicdark_vertical_align_middle" width="20" src="/Content/Language/img/icons/icon-calendar.svg">
+                                    <p class=" nicdark_color_white nicdark_display_table_cell nicdark_vertical_align_middle nicdark_font_size_13">
+                                        <asp:Label ID="LblIcerik2Tarih" runat="server"></asp:Label></p>
+                                    <img alt="" class="nicdark_margin_right_10 nicdark_margin_left_20 nicdark_display_table_cell nicdark_vertical_align_middle" width="20" src="/Content/Language/img/icons/icon-comment.svg">
+                                    <p class="nicdark_color_white nicdark_display_table_cell nicdark_vertical_align_middle nicdark_font_size_13">
+                                        <asp:LinkButton ID="LinkBtnIcerik2" runat="server">Review</asp:LinkButton></p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            </asp:Panel>
+            <asp:Panel ID="PanelIcerik3" Visible="false" runat="server">
+                <div class="nicdark_masonry_item nicdark_width_33_percentage nicdark_width_100_percentage_responsive " style="position: absolute; left: 399px; top: 289px;">
+
+                <div class="nicdark_section nicdark_padding_15 nicdark_box_sizing_border_box">
+                    <div class="nicdark_section nicdark_border_1_solid_grey">
+                        <div class="nicdark_section nicdark_position_relative">
+                            <asp:Image ID="ImgIcerik3" CssClass="nicdark_section" runat="server" />
+                          
+                            <a class="nicdark_position_absolute nicdark_right_20 nicdark_top_20 nicdark_display_inline_block nicdark_color_white nicdark_bg_yellow nicdark_first_font nicdark_padding_8 nicdark_border_radius_3 nicdark_font_size_13 nicdark_z_index_9" href="#">Article</a>
+                        </div>
+                        <div class="nicdark_section nicdark_padding_30 nicdark_box_sizing_border_box">
+                            <h5 class="nicdark_second_font nicdark_color_grey">
+                                <asp:Label ID="LblIcerik3Tarih" runat="server"></asp:Label></h5>
+                            <div class="nicdark_section nicdark_height_10"></div>
+                            <h2>
+                                
+                               
+                                <asp:LinkButton ID="LinkBtn3Baslik" CssClass="nicdark_first_font nicdark_color_greydark" runat="server"></asp:LinkButton>
+                            </h2>
+                            <div class="nicdark_section nicdark_height_20"></div>
+                            <p><asp:LinkButton ID="LinkBtn3Icerik" runat="server"></asp:LinkButton> </p>
+                        </div>
+                        <div class="nicdark_section nicdark_padding_20 nicdark_box_sizing_border_box nicdark_border_top_1_solid_grey">
+                            <div class="nicdark_width_50_percentage nicdark_float_left">
+                                <div class="nicdark_display_table nicdark_float_left">
+                                    
+                                    <p class="nicdark_display_table_cell nicdark_vertical_align_middle nicdark_font_size_15">&nbsp;</p>
+                                </div> 
+                            </div> 
+
+                            <div class="nicdark_width_50_percentage nicdark_float_left">
+                                <div class="nicdark_display_table nicdark_float_left">
+                                    <img alt="" class="nicdark_margin_right_10 nicdark_display_table_cell nicdark_vertical_align_middle" width="23" src="/Content/Language/img/icons/icon-comments.svg">
+                                    <p class="nicdark_display_table_cell nicdark_vertical_align_middle nicdark_font_size_15"><asp:LinkButton ID="LinkBtn3Incele" runat="server">Review</asp:LinkButton></p>
+                                </div> 
+                            </div> 
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </asp:Panel>
+
+            <asp:Panel ID="PanelIcerik4" Visible="false" runat="server">
+                <div class="nicdark_masonry_item nicdark_width_33_percentage nicdark_width_100_percentage_responsive " style="position: absolute; left: 0px; top: 525px;">
+
+                <div class="nicdark_section nicdark_padding_15 nicdark_box_sizing_border_box">
+                    
+
+                    <div class="nicdark_section nicdark_position_relative">
+                            
+                       <asp:Image ID="ImgIcerik4" CssClass="nicdark_section" runat="server" />
+                          
+                        <a class="nicdark_position_absolute nicdark_right_20 nicdark_top_20 nicdark_display_inline_block nicdark_color_white nicdark_bg_green nicdark_first_font nicdark_padding_8 nicdark_border_radius_3 nicdark_font_size_13 nicdark_z_index_9" href="#">Article</a>
+
+                        <div class="nicdark_bg_greydark_alpha_gradient_3 nicdark_position_absolute nicdark_left_0 nicdark_height_100_percentage nicdark_width_100_percentage nicdark_padding_30 nicdark_box_sizing_border_box">
+                            <div class="nicdark_position_absolute nicdark_bottom_30">
+                                <h2 class="nicdark_color_white">
+                                    <asp:LinkButton ID="LinkBtn4Baslik" CssClass="nicdark_color_white nicdark_first_font" runat="server"></asp:LinkButton>
+                                </h2>
+                                <div class="nicdark_section nicdark_height_10"></div> 
+                                <div class="nicdark_display_table nicdark_float_left">
+                                    <img alt="" class="nicdark_margin_right_10 nicdark_display_table_cell nicdark_vertical_align_middle" width="20" src="/Content/language/img/icons/icon-calendar.svg">
+                                    <p class=" nicdark_color_white nicdark_display_table_cell nicdark_vertical_align_middle nicdark_font_size_13">
+                                        <asp:Label ID="LblIcerik4Tarih" runat="server" Text="Label"></asp:Label></p>
+                                    <img alt="" class="nicdark_margin_right_10 nicdark_margin_left_20 nicdark_display_table_cell nicdark_vertical_align_middle" width="20" src="/Content/language/img/icons/icon-comment.svg">
+                                    <p class="nicdark_color_white nicdark_display_table_cell nicdark_vertical_align_middle nicdark_font_size_13"><asp:LinkButton ID="LinkBtn4Incele" runat="server"></asp:LinkButton></p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            </asp:Panel>
+
+            <asp:Panel ID="PanelIcerik5" Visible="false" runat="server">
+                <div class="nicdark_masonry_item nicdark_width_33_percentage nicdark_width_100_percentage_responsive " style="position: absolute; left: 799px; top: 573px;">
+
+                <div class="nicdark_section nicdark_padding_15 nicdark_box_sizing_border_box">
+                    <div class="nicdark_section nicdark_bg_red nicdark_text_align_center">
+                        <div class="nicdark_section nicdark_padding_50 nicdark_box_sizing_border_box">
+
+                            <div class="nicdark_display_inline_block">
+                                <img alt="" class="nicdark_margin_right_10" width="20" src="/Content/Language/img/icons/icon-link-white.svg">
+                                <h2 class="nicdark_color_white nicdark_line_height_35 nicdark_display_inline_block">
+                                    
+                                    <span class=" nicdark_padding_botttom_5">
+                                        <asp:LinkButton ID="LinkBtn5Baslik" CssClass="nicdark_color_white nicdark_first_font" runat="server"></asp:LinkButton>
+                                    </span>
+
+
+                                </h2>
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </asp:Panel>
+            
+
+
+
+
+            
+
+
+
+
+            
+
+
+
+
+            
+
+        </div>
+        <!--END masonry-->
+        </div>
+
+
+    </div>
+    <!--end container-->
+
+
+
+</div>
+
+        <div class="nicdark_section nicdark_height_50"></div>
+
+
+        <div class="nicdark_section nicdark_background_size_cover nicdark_background_position_center_top" style="background-image:url(/Content/Language/img/parallax/img2.jpg);">
+
+    <div class="nicdark_section nicdark_bg_greydark_alpha_4">
+
+
+        <div class="nicdark_section nicdark_height_100"></div>
+
+
+        <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix">
+
+
+            <div class="grid grid_6">
+                <div class="nicdark_section nicdark_height_70"></div>
+                <h1 class="nicdark_color_white nicdark_second_font"><span class="nicdark_border_bottom_4_solid_white">Do You Have Any Question ?</span></h1>
+                <div class="nicdark_section nicdark_height_20"></div>
+                <h1 class="nicdark_color_white nicdark_font_size_40"><strong><a class="nicdark_first_font nicdark_color_white" href="#">Let's. You send a message to us.</a></strong></h1>
+                <div class="nicdark_section nicdark_height_40"></div>
+
+
+              
+
+            </div>
+
+            <div class="grid grid_1">
+                <div class="nicdark_section nicdark_height_1"></div>
+            </div>
+
+            <div class="grid grid_5">
+                
+                <!--form-->
+    <asp:UpdatePanel ID="UpdatePanelMesajGonder" runat="server">
+        <ContentTemplate>
+            <div class="nicdark_section nicdark_bg_white">
+
+                  <div class="nicdark_section nicdark_padding_20 nicdark_box_sizing_border_box nicdark_bg_grey nicdark_border_bottom_1_solid_grey nicdark_text_align_center">
+                    <div class="nicdark_section nicdark_height_5"></div>
+                    <h1 class=""><strong>Send a Message</strong></h1>
+                  </div>
+                  <div class="nicdark_section nicdark_padding_20_50 nicdark_box_sizing_border_box">
+                    
+                    <div class="nicdark_section">
+                        <div class="nicdark_width_50_percentage nicdark_width_100_percentage_all_iphone nicdark_padding_10 nicdark_box_sizing_border_box nicdark_float_left">
+                            <asp:TextBox required ID="txtIsım" CssClass="nicdark_padding_left_0 nicdark_background_none nicdark_border_top_width_0 nicdark_border_bottom_width_2 nicdark_border_right_width_0 nicdark_border_left_width_0" runat="server" placeholder="Name" ValidationGroup="msg"></asp:TextBox>
+                            
+                        </div>
+                        <div class="nicdark_width_50_percentage nicdark_width_100_percentage_all_iphone nicdark_padding_10 nicdark_box_sizing_border_box nicdark_float_left">
+                            <asp:TextBox required ID="txtSoyad" CssClass="nicdark_padding_left_0 nicdark_background_none nicdark_border_top_width_0 nicdark_border_bottom_width_2 nicdark_border_right_width_0 nicdark_border_left_width_0" runat="server" placeholder="Surname" ValidationGroup="msg"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="nicdark_section">
+                        <div class="nicdark_width_100_percentage nicdark_width_100_percentage_all_iphone nicdark_padding_10 nicdark_box_sizing_border_box nicdark_float_left">
+                            <asp:TextBox required ID="txtMail" CssClass="nicdark_padding_left_0 nicdark_background_none nicdark_border_top_width_0 nicdark_border_bottom_width_2 nicdark_border_right_width_0 nicdark_border_left_width_0" runat="server" placeholder="Phone Number" ValidationGroup="msg"></asp:TextBox>
+                        </div>
+                       
+                    </div>
+                    <div class="nicdark_section">
+                        <div class="nicdark_width_100_percentage nicdark_padding_10 nicdark_box_sizing_border_box nicdark_float_left">
+                             <asp:TextBox required Rows="4" style="resize:vertical;" ID="txtMesaj" TextMode="MultiLine"  CssClass="nicdark_padding_left_0 nicdark_background_none nicdark_border_top_width_0 nicdark_border_bottom_width_2 nicdark_border_right_width_0 nicdark_border_left_width_0" placeholder="Message" runat="server" ValidationGroup="msg"></asp:TextBox>
+                           
+                        </div>
+                    </div>
+                    <div class="nicdark_section">
+                        <div class="nicdark_width_100_percentage nicdark_padding_10 nicdark_box_sizing_border_box nicdark_float_left">
+                                <asp:Button CssClass="nicdark_bg_white_hover nicdark_color_green_hover nicdark_border_2_solid_green nicdark_transition_all_08_ease nicdark_display_inline_block nicdark_text_align_center nicdark_box_sizing_border_box nicdark_width_100_percentage nicdark_color_white nicdark_bg_green nicdark_first_font nicdark_padding_10_20 nicdark_border_radius_3 " ID="BtnGonder" runat="server" Text="Send" ValidationGroup="msg" OnClick="BtnGonder_Click" />
+                            
+                        </div>
+                    </div>
+
+                     <div class="nicdark_section nicdark_padding_20 nicdark_box_sizing_border_box nicdark_bg_grey nicdark_border_bottom_1_solid_grey nicdark_text_align_center">
+                    <h6><asp:Literal ID="LtrBilgi" runat="server"></asp:Literal></h6>
+                   
+                  </div>
+
+                  </div>  
+
+                </div>
+        </ContentTemplate>
+        
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="BtnGonder" EventName="Click" />
+        </Triggers>
+        
+    </asp:UpdatePanel>
+                
+                <!--form-->
+
+            </div>
+
+
+        </div>
+        <!--end container-->
+
+        <div class="nicdark_section nicdark_height_100"></div>
+
+
+    </div>
+
+</div> 
+
+
+         
+
+
+        <div class="nicdark_section nicdark_bg_greydark nicdark_border_top_1_solid_greydark">
+
+    <div class="nicdark_section nicdark_height_50"></div>
+
+    <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix">
+    
+        
+        <div class="grid grid_12 nicdark_text_align_center">
+            
+           <!--LOGO
+                <a href="index-2.html"><img alt="" class="nicdark_position_absolute nicdark_left_15 nicdark_top_17" width="120" src="/Content/Language/img/logos/logo-foodlab-white.svg"></a>
+              -->
+            
+            <div class="nicdark_section nicdark_height_20"></div>
+            
+            <div class="nicdark_display_inline_block">
+                <asp:LinkButton ID="LinkBtnFacebook" runat="server"><img alt="" width="40" class="nicdark_margin_right_10" src="/Content/Language/img/icons/icon-facebook-circle.svg"></asp:LinkButton>
+                             <asp:LinkButton ID="LinkBtnTwitter" runat="server"><img alt="" width="40" class="nicdark_margin_right_10" src="/Content/Language/img/icons/icon-twitter-circle.svg"></asp:LinkButton>
+                           <asp:LinkButton ID="LinkBtnInstagram" runat="server"><img alt="" width="40" class="nicdark_margin_right_10" src="/Content/Language/img/icons/icon-instagram-grey.svg"></asp:LinkButton>
+              
+               
+            </div>
+
+        </div>
+
+    </div>
+    <!--end container-->
+
+    <div class="nicdark_section nicdark_height_50"></div>
+
+</div>
+
+<div class="nicdark_section nicdark_bg_greydark">
+
+    <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix nicdark_border_top_1_solid_greydark">
+    
+        
+        <div class="grid grid_6 nicdark_text_align_center_responsive">
+            <p class="nicdark_color_grey nicdark_font_size_14">© Copyright 2017 histudymalta.com - All Rights Reserved</p>
+        </div>
+
+            <uc1:AltMenu runat="server" id="AltMenu" />
+
+   
+    </div>
+    <!--end container-->
+
+</div>
+
+    </div>
+</div>
+    </form>
+         <!--js-->
+        <script src="/Content/Language/js/nicdark_plugins1.js" type="text/javascript"></script>
+
+</body>
+</html>
